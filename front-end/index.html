@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tóm tắt văn bản</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SUMMARY TEXT</h1>
+
+        <div class="input-area">
+            <textarea id="input-text" placeholder="Enter your input text here..."></textarea>
+        </div>
+
+        <div class="options">
+            <label for="summary-length">Summary Length:</label>
+            <select id="summary-length">
+                <option value="short">Short</option>
+                <option value="medium">Medium</option>
+                <option value="long">Long</option>
+            </select>
+        </div>
+
+        <button id="summarize-btn">Summarize Now</button>
+
+        <div class="output-area">
+            <p id="summarized-text"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
