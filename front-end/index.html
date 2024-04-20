@@ -4,30 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tóm tắt văn bản</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/icons/themify-icons/themify-icons.css">
 </head>
-<body>
-    <div class="container">
-        <h1>SUMMARY TEXT</h1>
+<body>   
+    <div class="content">
+        <h1>TEXT SUMMARY</h1>
+    </div>
 
-        <div class="input-area">
-            <textarea id="input-text" placeholder="Enter your input text here..."></textarea>
+    <div id="container">
+        <div class="input-panel">
+            <div class="heading-one">
+                <p>Summarizer</p>
+            </div>
+            <textarea id="input-text" placeholder="Enter your input text here..."></textarea>   
+                <div class="buttons">
+                    <i class="upload-icon ti-upload"></i>
+                    <select id="length-select">
+                        <option value="short">Short</option>
+                        <option value="medium">Medium</option>
+                        <option value="long">Long</option>
+                    </select>
+                </div>
         </div>
 
-        <div class="options">
-            <label for="summary-length">Summary Length:</label>
-            <select id="summary-length">
-                <option value="short">Short</option>
-                <option value="medium">Medium</option>
-                <option value="long">Long</option>
-            </select>
+        <div class="output-panel">
+        <div class="heading-two">
+                <p>Summarized Text</p>
         </div>
-
-        <button id="summarize-btn">Summarize Now</button>
-
-        <div class="output-area">
-            <p id="summarized-text"></p>
+            <div id="summary-output"></div>
         </div>
+    </div>
+
+    <div id="button-container">
+        <button id="summarize-button">Summarize Now</button>
     </div>
 
     <script src="script.js"></script>
