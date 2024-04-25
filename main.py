@@ -1,6 +1,6 @@
-import streamlit as st
+#import streamlit as st
 from summary import Summarizer
-from evaluate import Evaluate
+#from evaluate import Evaluate
 
 
 
