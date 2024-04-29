@@ -54,7 +54,14 @@ ul {
     height: 170px;
     margin-left: 7px;
     border: none;
+    resize: none;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
 }
+
+#input-text:focus {
+    outline: none; 
+  }
 
 #length-select {
     margin-right: 20px;
@@ -63,6 +70,9 @@ ul {
     font-style: normal;   
     height: 25px;  
     margin-top: 7px;
+    border-color: #00000031;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #input .ti-upload  {
