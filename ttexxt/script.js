@@ -1,4 +1,4 @@
-const summarizeButton = document.getElementById('summarize-button');
+const summarizeButton = document.getElementById('btn-ph');
 const inputText = document.getElementById('input-text');
 const summaryOutput = document.getElementById('summary-output');
 
