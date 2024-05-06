@@ -7,11 +7,11 @@ def extract_text_from_pdf(pdf_file: str) -> [str]:
         pdf_text = []
         for page in reader.pages: 
             content = page.extract_text()
-            pdf_text.append(content)
+            pdf_text.append(content)    
     return pdf_text
 
 # demo
-extracted_text = extract_text_from_pdf(r'D:\CNPM\Text-Summary\pdf to text\1706.03762v7.pdf')
+extracted_text = extract_text_from_pdf(r'D:\CNPM\Text-Summary\pdf to text\Lo-trinh-hoc-IELTS-tu-0-8.5.pdf')
 
 doc=''
 for text in extracted_text:
