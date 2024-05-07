@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+}
+
+html {        
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;      
+}
+
+header {
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+    font-size: 35px;
+    color: rgb(17, 88, 29);
+}
+
+ul {
+    list-style: none;
+}
+
+#input {
+    margin: 20px auto 10px;
+    width: 50%;
+    height: 260px;
+    border: 1px solid #00000031;
+    border-radius: 10px;
+}
+
+#input p {
+    background-color: rgba(8, 162, 31, 0.082);
+    padding-left: 10px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #00000031;
+    color: rgb(17, 88, 29);
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+}
+
+#input ul li {
+    display: inline-block;
+}
+
+#input ul {
+    border-top: 1px solid #00000031;
+    display: flex;
+    justify-content: space-between;
+}
+
+#input-text {
+    width: 97%;
+    height: 170px;
+    margin-left: 7px;
+    border: none;
+    resize: none;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    color: #000000da;
+}
+
+#input-text:focus {
+    outline: none; 
+}
+
+#length-select {
+    margin-right: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;   
+    height: 25px;  
+    margin-top: 7px;
+    border-color: #00000031;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#input .ti-upload  {
+    margin-left: -25px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#input .btn-upload {
+    margin-top: 10px;
+}
+
+#output {
+    width: 50%;
+    margin: 10px auto 0;
+    height: 260px;
+    border: 1px solid #00000031;
+    border-radius: 10px;
+}
+
+#output p {
+    background-color: rgba(8, 162, 31, 0.082);
+    padding-left: 10px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #00000031;
+    color: rgb(17, 88, 29);
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+}
+
+#output ul li {
+    display: inline-block;
+    padding-top: 7px;
+    padding-right: 3px;
+} 
+
+#output ul {
+    display: flex;
+    justify-content: end;
+    margin-top: 4px;
+    border-top: 1px solid #00000031;
+}
+
+#output .ti-layers {
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#output .ti-download {
+    cursor: pointer;
+    background: none;
+}
+
+#output .ti-panel {
+    cursor: pointer;
+    margin-right: 10px;
+}
+#summary-output {
+    width: 97%;
+    height: 170px;
+    margin-left: 7px;
+    border: none;
+    resize: none;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    background: none;
+    color: #000000da;
+}
+
+#btn-ph {
+    padding: 10px 20px;
+    background-color: rgb(22, 91, 44);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.btn-container #btn-ph:hover {
+    background-color: rgb(15, 68, 23);
+}
+
+.btn-container {
+    text-align: center;
+}

@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from summary import Summarizer
 
-app = Flask(__name__, static_folder='front-end')
+app = Flask(__name__, static_folder='frontend')
 
 @app.route('/')
 def index():
