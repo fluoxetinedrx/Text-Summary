@@ -11,16 +11,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Faustina:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>TEXT SUMMARY</header>
+    <header>UET SUMMARIZER</header>
     <div class="box">
         <div id="input">
             <p>Summarizer</p>
             <textarea id="input-text" placeholder="Enter your input text here..." onfocus="clearPlaceholder()" onblur="addPlaceholder()"></textarea>
             <ul>
                 <li class="btn-upload" style="font-size: 14px;">
-                    <i class="ti-upload"></i>
-                    Upload
-                </li>
+                    <label for="file-upload">
+                      <i class="ti-upload"></i>
+                      Upload File
+                    </label>
+                    <input type="file" id="file-upload" accept=".docx,.pdf" style="display: none;" onchange="handleFileUpload(this.files)">
+                    <span id="filename"></span>
+                    <!-- <button id="delete-file" class="delete-button" disabled>x</button> -->
+                  </li>
                 <li>
                     <select id="length-select">
                         <option value="short">Short</option>

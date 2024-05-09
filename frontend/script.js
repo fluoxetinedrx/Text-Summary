@@ -16,6 +16,26 @@ function clearPlaceholder() {
     }
   }  
 
+  function handleFileUpload(files) {
+  if (files.length === 0) {
+    return;
+  }
+
+  const uploadedFile = files[0];
+  const fileName = uploadedFile.name;
+
+  const inputText = document.getElementById("input-text");
+  inputText.value = fileName;
+
+  const deleteButton = document.getElementById("delete-file");
+  deleteButton.disabled = false;
+
+  deleteButton.addEventListener("click", function() {
+    inputText.value = "";
+    this.disabled = true; // Disable the button again
+  });
+}
+  
 summarizeButton.addEventListener('click', async () => {
     const textToSummarize = inputText.value;
     const summaryText = await runPythonScript(textToSummarize);
