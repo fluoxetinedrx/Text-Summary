@@ -2,6 +2,20 @@ const summarizeButton = document.getElementById('btn-ph');
 const inputText = document.getElementById('input-text');
 const summaryOutput = document.getElementById('summary-output');
 
+function clearPlaceholder() {
+    const placeholderText = document.getElementById("input-text").placeholder;
+    if (placeholderText) {
+      document.getElementById("input-text").placeholder = "";
+    }
+  }
+  
+  function addPlaceholder() {
+    const inputText = document.getElementById("input-text").value;
+    if (!inputText) {
+      document.getElementById("input-text").placeholder = "Enter your input text here...";
+    }
+  }  
+
 summarizeButton.addEventListener('click', async () => {
     const textToSummarize = inputText.value;
     const summaryText = await runPythonScript(textToSummarize);

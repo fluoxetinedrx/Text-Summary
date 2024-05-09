@@ -15,7 +15,7 @@
     <div class="box">
         <div id="input">
             <p>Summarizer</p>
-            <textarea id="input-text" placeholder="Enter your input text here..."></textarea>
+            <textarea id="input-text" placeholder="Enter your input text here..." onfocus="clearPlaceholder()" onblur="addPlaceholder()"></textarea>
             <ul>
                 <li class="btn-upload" style="font-size: 14px;">
                     <i class="ti-upload"></i>
@@ -40,7 +40,7 @@
             <textarea id="summary-output" disabled></textarea>
             <ul>
                 <li>
-                    <i class="ti-panel"></i>
+                    <i class="ti-panel js-panel"></i>
                 </li>
                 <li>
                     <i class="ti-download"></i>
@@ -52,6 +52,65 @@
         </div>
     </div>
 
+    <div class="modal js-modal">
+        <div class="modal-container">
+            <div class="modal-close js-modal-close">
+                <i class="ti-close"></i>
+            </div>
+
+            <header class="modal-header">
+                Statistics
+            </header>
+
+            <div class="modal-body">
+                <div class="word-count">
+                    <p>Word Count</p>
+                    <ul class="number">
+                        <li class="one">0</li>
+                        <li><i class="ti-arrow-right"></i></li>
+                        <li>0</li>
+                    </ul>
+                    <ul class="from-to">
+                        <li class="from">From</li>
+                        <li>To</li>
+                    </ul>
+                </div>
+                <div class="characters">
+                    <p>Characters</p>
+                    <ul class="number">
+                        <li class="one">0</li>
+                        <li><i class="ti-arrow-right"></i></li>
+                        <li>0</li>
+                    </ul>
+                    <ul class="from-to">
+                        <li class="from">From</li>
+                        <li>To</li>
+                    </ul>
+                </div>
+                <div class="reduction">
+                    <p>Reduction 0%</p>
+                </div>                
+            </div>
+        </div>
+    </div>
     <script src="./script.js"></script>
+
+    <script>
+        const panels = document.querySelector('.js-panel')
+        const modal = document.querySelector('.js-modal')
+        const modalClose = document.querySelector('.js-modal-close')
+
+        function showStatistics() {
+            modal.classList.add('open')
+        }
+
+        function hideStatistics() {
+            modal.classList.remove('open')
+        }
+
+        panels.addEventListener('click', showStatistics)
+
+        modalClose.addEventListener('click', hideStatistics)
+    </script>
 </body>
 </html>

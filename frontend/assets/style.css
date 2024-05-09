@@ -79,10 +79,20 @@ ul {
     cursor: pointer;
 }
 
+#length-select:hover {
+    border: #000 solid 1px;
+
+}
+
 #input .ti-upload  {
     margin-left: -25px;
     cursor: pointer;
     text-align: center;
+    opacity: 0.8;
+}
+
+#input .ti-upload:hover {
+    opacity: 1;
 }
 
 #input .btn-upload {
@@ -126,17 +136,33 @@ ul {
     cursor: pointer;
     margin-right: 10px;
     margin-left: 10px;
+    opacity: 0.8;
+}
+
+#output .ti-layers:hover {
+    opacity: 1;
 }
 
 #output .ti-download {
     cursor: pointer;
     background: none;
+    opacity: 0.8;
+}
+
+#output .ti-download:hover {
+    opacity: 1;
 }
 
 #output .ti-panel {
     cursor: pointer;
     margin-right: 10px;
+    opacity: 0.8;
 }
+
+#output .ti-panel:hover {
+    opacity: 1;
+}
+
 #summary-output {
     width: 97%;
     height: 170px;
@@ -159,6 +185,8 @@ ul {
     border-radius: 30px;
     margin-top: 5px;
     margin-bottom: 5px;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
 }
 
 .btn-container #btn-ph:hover {
@@ -167,4 +195,108 @@ ul {
 
 .btn-container {
     text-align: center;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: baseline;
+    justify-content: right; 
+    padding-right: 15px;
+    padding-top: 10px;
+    display: none;
+}
+
+.modal-container {
+    background: #fff;
+    width: 350px;
+    height: 285px;
+    position: relative;
+    border: 1px solid #00000031;
+    border-radius: 10px;
+}
+
+.modal-header {
+    margin-top: 0px;
+    background-color: rgba(8, 162, 31, 0.082);
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 20;
+    padding-left: 10px;
+    height: 40px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom: 1px solid #00000031;
+}
+
+.modal-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    color: rgb(17, 88, 29);
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.modal-close:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    margin-left: 10px;
+}
+
+.modal-body li {
+    display: inline-block;   
+}
+
+.modal-body .word-count,
+.modal-body .characters,
+.modal-body .reduction{
+    margin-top: 10px;
+    padding: 5px;
+    padding-left: 10px;
+    margin-right: 10px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.modal-body .word-count p,
+.modal-body .characters p {
+    padding-bottom: 3px;
+    padding-left: 2px;
+}
+
+.number {
+    padding-left: 5px;
+    font-size: 19px;
+    color: rgb(17, 88, 29);
+}
+
+.ti-arrow-right {
+    margin-top: 10px;
+    padding-left: 25px;
+    font-weight: 15;
+    padding-right: 6px;
+    color: rgba(0, 0, 0, 0.238);
+}
+
+.from-to {
+    padding-left: 5px;
+    font-size: 13px;
+}
+
+.from-to .from {
+    padding-right: 37px;
+}
+
+.modal.open {
+    display: flex;
 }
