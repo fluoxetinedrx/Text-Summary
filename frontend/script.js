@@ -12,8 +12,7 @@ function clearPlaceholder() {
 function addPlaceholder() {
   const inputText = document.getElementById("input-text").value;
   if (!inputText) {
-    document.getElementById("input-text").placeholder =
-      "Enter your input text here...";
+    document.getElementById("input-text").placeholder = "Enter your input text here...";
   }
 }
 
@@ -23,10 +22,22 @@ function handleFileUpload(files) {
   }
 
   const uploadedFile = files[0];
-  const fileName = uploadedFile.name;
+  const formData = new FormData();
+  formData.append("file", uploadedFile);
 
-  const inputText = document.getElementById("input-text");
-  inputText.value = fileName;
+  fetch("/upload", {
+    method: "POST",
+    body: formData,
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.error) {
+      console.error(data.error);
+    } else {
+      inputText.value = data.text;
+    }
+  })
+  .catch(error => console.error('Error:', error));
 
   const deleteButton = document.getElementById("delete-file");
   deleteButton.disabled = false;
