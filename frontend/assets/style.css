@@ -239,7 +239,8 @@ ul {
     position: absolute;
     right: 0;
     top: 0;
-    padding: 10px;
+    margin: 9px;
+    padding: 2px 5px 0px 5px;
     color: rgb(17, 88, 29);
     cursor: pointer;
     opacity: 0.8;
@@ -247,6 +248,9 @@ ul {
 
 .modal-close:hover {
     opacity: 1;
+    color: #fff;
+    border-radius: 5px;
+    background-color: rgb(15, 68, 23);
 }
 
 .modal-body {
