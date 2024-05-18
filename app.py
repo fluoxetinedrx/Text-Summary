@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 import os
 import mimetypes
 from text_processing import preprocess_text, extract_text_from_docx, extract_text_from_pdf
-from evaluate import Evaluate
+from eval import Evaluate
 
 app = Flask(__name__, static_folder='frontend')
 
