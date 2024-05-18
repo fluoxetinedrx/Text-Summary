@@ -23,9 +23,18 @@ def index():
 def summarize():
     data = request.json
     text = data['text']
+    length = data.get('length')
+    
+    if length == 'short':
+        keep_sentences = 3
+    elif length == 'medium':
+        keep_sentences = 5
+    else:  # long
+        keep_sentences = 7
+    
     text = preprocess_text(text)  # Xử lý văn bản trước khi tóm tắt
     summarizer = Summarizer()
-    summary, _ = summarizer.summarize(text)
+    summary, _ = summarizer.summarize(text, keep_sentences)
     
     # Tạo đối tượng Evaluate và tính toán các chỉ số
     evaluator = Evaluate()

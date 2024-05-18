@@ -1,6 +1,7 @@
 const summarizeButton = document.getElementById("btn-ph");
 const inputText = document.getElementById("input-text");
 const summaryOutput = document.getElementById("summary-output");
+const lengthSelect = document.getElementById("length-select");
 
 function clearPlaceholder() {
   const placeholderText = document.getElementById("input-text").placeholder;
@@ -58,7 +59,9 @@ modalClose.addEventListener("click", hideStatistics);
 
 summarizeButton.addEventListener("click", async () => {
   const textToSummarize = inputText.value;
-  const response = await runPythonScript(textToSummarize);
+  const lengthOption = lengthSelect.value;
+
+  const response = await runPythonScript(textToSummarize, lengthOption);
   summaryOutput.textContent = response.summary;
 
   if (response.statistics) {
@@ -66,7 +69,7 @@ summarizeButton.addEventListener("click", async () => {
   }
 });
 
-async function runPythonScript(textToSummarize) {
+async function runPythonScript(textToSummarize, lengthOption) {
   try {
     const response = await fetch("/summary", {
       method: "POST",
@@ -75,16 +78,14 @@ async function runPythonScript(textToSummarize) {
       },
       body: JSON.stringify({
         text: textToSummarize,
+        length: lengthOption, // Gửi giá trị length đã chọn đến server
       }),
     });
     const data = await response.json();
-    return data;
+    return data; // Trả về dữ liệu đã nhận từ máy chủ
   } catch (error) {
     console.error(error);
-    return {
-      summary: "An error occurred while fetching summary.",
-      statistics: null,
-    };
+    return { summary: "An error occurred while fetching summary.", statistics: null };
   }
 }
 
