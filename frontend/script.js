@@ -39,14 +39,6 @@ function handleFileUpload(files) {
       }
     })
     .catch((error) => console.error("Error:", error));
-
-  const deleteButton = document.getElementById("delete-file");
-  deleteButton.disabled = false;
-
-  deleteButton.addEventListener("click", function () {
-    inputText.value = "";
-    this.disabled = true; // Disable the button again
-  });
 }
 
 const panels = document.querySelector(".js-panel");
@@ -66,8 +58,13 @@ modalClose.addEventListener("click", hideStatistics);
 
 summarizeButton.addEventListener("click", async () => {
   const textToSummarize = inputText.value;
-  const summaryText = await runPythonScript(textToSummarize);
-  summaryOutput.textContent = summaryText;
+  const response = await runPythonScript(textToSummarize);
+  summaryOutput.textContent = response.summary;
+
+  // Update statistics if available
+  if (response.statistics) {
+    updateStatistics(response.statistics);
+  }
 });
 
 async function runPythonScript(textToSummarize) {
@@ -82,29 +79,42 @@ async function runPythonScript(textToSummarize) {
       }),
     });
     const data = await response.json();
-    return data.summary;
+    return data;
   } catch (error) {
     console.error(error);
-    return "An error occurred while fetching summary.";
+    return {
+      summary: "An error occurred while fetching summary.",
+      statistics: null
+    };
   }
 }
 
-// Statistic
-const wordCountElement = document.querySelector(".word-count");
-const characterCountElement = document.querySelector(".characters");
-const reductionElement = document.querySelector(".reduction");
+// Function to update statistics
+function updateStatistics(statistics) {
+  const wordCountElement = document.querySelector(".word-count");
+  const characterCountElement = document.querySelector(".characters");
+  const reductionElement = document.querySelector(".reduction");
 
-const values = fetchValues();
+  const originalWordCount = statistics.original_word_count;
+  const summaryWordCount = statistics.summary_word_count;
 
-wordCountElement.querySelector(".number li:nth-child(1)").textContent =
-  values.wordCount;
-wordCountElement.dataset.value = values.wordCount;
+  const originalCharCount = statistics.original_char_count;
+  const summaryCharCount = statistics.summary_char_count;
 
-characterCountElement.querySelector(".number li:nth-child(1)").textContent =
-  values.characterCount;
-characterCountElement.dataset.value = values.characterCount;
+  const reduction = statistics.reduction;
+  const contentBasedScore = statistics.content_based_score;
 
-reductionElement.querySelector(
-  "p"
-).textContent = `Reduction ${values.reduction}%`;
-reductionElement.dataset.value = values.reduction;
+  // Update word count
+  wordCountElement.querySelector(".number li:nth-child(1)").textContent = originalWordCount;
+  wordCountElement.querySelector(".number li:nth-child(3)").textContent = summaryWordCount;
+  wordCountElement.dataset.value = originalWordCount;
+
+  // Update character count
+  characterCountElement.querySelector(".number li:nth-child(1)").textContent = originalCharCount;
+  characterCountElement.querySelector(".number li:nth-child(3)").textContent = summaryCharCount;
+  characterCountElement.dataset.value = originalCharCount;
+
+  // Update reduction
+  reductionElement.querySelector("p").textContent = `Reduction ${reduction.toFixed(2)}% (Content Score: ${contentBasedScore.toFixed(2)}%)`;
+  reductionElement.dataset.value = reduction.toFixed(2);
+}

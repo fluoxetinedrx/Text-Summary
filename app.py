@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 import os
 import mimetypes
 from text_processing import preprocess_text, extract_text_from_docx, extract_text_from_pdf
+from evaluate import Evaluate
 
 app = Flask(__name__, static_folder='frontend')
 
@@ -25,7 +26,30 @@ def summarize():
     text = preprocess_text(text)  # Xử lý văn bản trước khi tóm tắt
     summarizer = Summarizer()
     summary, _ = summarizer.summarize(text)
-    return jsonify({'summary': summary})
+    
+    # Tạo đối tượng Evaluate và tính toán các chỉ số
+    evaluator = Evaluate()
+    content_based_score = evaluator.content_based(summary, text)
+    content_based_score = round(content_based_score * 100, 2)
+    
+    # Thống kê văn bản gốc và văn bản tóm tắt
+    original_word_count = len(text.split())
+    summary_word_count = len(summary.split())
+    original_char_count = len(text)
+    summary_char_count = len(summary)
+    reduction = ((original_word_count - summary_word_count) / original_word_count) * 100
+
+    return jsonify({
+        'summary': summary,
+        'statistics': {
+            'original_word_count': original_word_count,
+            'summary_word_count': summary_word_count,
+            'original_char_count': original_char_count,
+            'summary_char_count': summary_char_count,
+            'reduction': reduction,
+            'content_based_score': content_based_score
+        }
+    })
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
