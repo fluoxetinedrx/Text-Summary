@@ -12,7 +12,8 @@ function clearPlaceholder() {
 function addPlaceholder() {
   const inputText = document.getElementById("input-text").value;
   if (!inputText) {
-    document.getElementById("input-text").placeholder = "Enter your input text here...";
+    document.getElementById("input-text").placeholder =
+      "Enter your input text here...";
   }
 }
 
@@ -29,15 +30,15 @@ function handleFileUpload(files) {
     method: "POST",
     body: formData,
   })
-  .then(response => response.json())
-  .then(data => {
-    if (data.error) {
-      console.error(data.error);
-    } else {
-      inputText.value = data.text;
-    }
-  })
-  .catch(error => console.error('Error:', error));
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.error) {
+        console.error(data.error);
+      } else {
+        inputText.value = data.text;
+      }
+    })
+    .catch((error) => console.error("Error:", error));
 
   const deleteButton = document.getElementById("delete-file");
   deleteButton.disabled = false;
@@ -87,3 +88,23 @@ async function runPythonScript(textToSummarize) {
     return "An error occurred while fetching summary.";
   }
 }
+
+// Statistic
+const wordCountElement = document.querySelector(".word-count");
+const characterCountElement = document.querySelector(".characters");
+const reductionElement = document.querySelector(".reduction");
+
+const values = fetchValues();
+
+wordCountElement.querySelector(".number li:nth-child(1)").textContent =
+  values.wordCount;
+wordCountElement.dataset.value = values.wordCount;
+
+characterCountElement.querySelector(".number li:nth-child(1)").textContent =
+  values.characterCount;
+characterCountElement.dataset.value = values.characterCount;
+
+reductionElement.querySelector(
+  "p"
+).textContent = `Reduction ${values.reduction}%`;
+reductionElement.dataset.value = values.reduction;
