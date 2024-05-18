@@ -61,7 +61,6 @@ summarizeButton.addEventListener("click", async () => {
   const response = await runPythonScript(textToSummarize);
   summaryOutput.textContent = response.summary;
 
-  // Update statistics if available
   if (response.statistics) {
     updateStatistics(response.statistics);
   }
@@ -104,23 +103,66 @@ function updateStatistics(statistics) {
   const reduction = statistics.reduction;
   const contentBasedScore = statistics.content_based_score;
 
-  // Update word count
   wordCountElement.querySelector(".number li:nth-child(1)").textContent =
     originalWordCount;
   wordCountElement.querySelector(".number li:nth-child(3)").textContent =
     summaryWordCount;
   wordCountElement.dataset.value = originalWordCount;
 
-  // Update character count
   characterCountElement.querySelector(".number li:nth-child(1)").textContent =
     originalCharCount;
   characterCountElement.querySelector(".number li:nth-child(3)").textContent =
     summaryCharCount;
   characterCountElement.dataset.value = originalCharCount;
 
-  // Update reduction
   reductionElement.querySelector(
     "p"
   ).textContent = `Content Score: ${contentBasedScore.toFixed(2)}%`;
   reductionElement.dataset.value = reduction.toFixed(2);
 }
+
+//dowload button
+const downloadButton = document.getElementById("download-button");
+const outputDiv = document.getElementById("summary-output");
+
+downloadButton.addEventListener("click", () => {
+  const docContent = outputDiv.outerHTML;
+  const blob = new Blob([docContent], {
+    type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  });
+
+  const url = window.URL.createObjectURL(blob);
+
+  const downloadLink = document.createElement("a");
+  downloadLink.href = url;
+  downloadLink.download = "summary.docx";
+
+  downloadLink.click();
+
+  window.URL.revokeObjectURL(url);
+  downloadLink.remove();
+});
+
+//copy button
+const copyButton = document.getElementById("copy-button");
+
+copyButton.addEventListener("click", () => {
+  const textToCopy = outputDiv.innerText;
+
+  const copyTextArea = document.createElement("textarea");
+  copyTextArea.value = textToCopy;
+
+  document.body.appendChild(copyTextArea);
+
+  copyTextArea.select();
+
+  try {
+    navigator.clipboard.writeText(textToCopy);
+    alert("Text copied successfully!");
+  } catch (err) {
+    document.execCommand("copy");
+    alert("Please select the copied text and press Ctrl+C or Cmd+C to copy.");
+  }
+
+  document.body.removeChild(copyTextArea);
+});
