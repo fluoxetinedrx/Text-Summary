@@ -84,7 +84,7 @@ async function runPythonScript(textToSummarize) {
     console.error(error);
     return {
       summary: "An error occurred while fetching summary.",
-      statistics: null
+      statistics: null,
     };
   }
 }
@@ -105,16 +105,22 @@ function updateStatistics(statistics) {
   const contentBasedScore = statistics.content_based_score;
 
   // Update word count
-  wordCountElement.querySelector(".number li:nth-child(1)").textContent = originalWordCount;
-  wordCountElement.querySelector(".number li:nth-child(3)").textContent = summaryWordCount;
+  wordCountElement.querySelector(".number li:nth-child(1)").textContent =
+    originalWordCount;
+  wordCountElement.querySelector(".number li:nth-child(3)").textContent =
+    summaryWordCount;
   wordCountElement.dataset.value = originalWordCount;
 
   // Update character count
-  characterCountElement.querySelector(".number li:nth-child(1)").textContent = originalCharCount;
-  characterCountElement.querySelector(".number li:nth-child(3)").textContent = summaryCharCount;
+  characterCountElement.querySelector(".number li:nth-child(1)").textContent =
+    originalCharCount;
+  characterCountElement.querySelector(".number li:nth-child(3)").textContent =
+    summaryCharCount;
   characterCountElement.dataset.value = originalCharCount;
 
   // Update reduction
-  reductionElement.querySelector("p").textContent = `Reduction ${reduction.toFixed(2)}% (Content Score: ${contentBasedScore.toFixed(2)}%)`;
+  reductionElement.querySelector(
+    "p"
+  ).textContent = `Content Score: ${contentBasedScore.toFixed(2)}%`;
   reductionElement.dataset.value = reduction.toFixed(2);
 }
