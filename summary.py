@@ -1,10 +1,7 @@
-import networkx as nx
+
 import numpy as np
 from nltk import sent_tokenize
 from preprocess import Preprocessor
-from sklearn.cluster import KMeans
-from sklearn.metrics import pairwise_distances_argmin_min
-from sklearn.metrics.pairwise import cosine_similarity
 from vectorize import Vectorizer
 
 
@@ -18,7 +15,7 @@ class Summarizer():
         origin_sentence = sent_tokenize(paragraph)
         # tiền xử lý văn bản
         sentences = self.clearner.preprocessing(paragraph)
-        # biến các câu văn thành vector cột
+        # vector hoá các câu văn
         sent_vectors = self.vectorizer.vectorize(sentences)  
 
         # chuyển vị ma trận câu
@@ -27,7 +24,7 @@ class Summarizer():
         # phân rã giá trị suy biến
         U, S, VT = np.linalg.svd(sent_vectors_t)
 
-        # Tính toán Vector Quan trọng
+        # Tính toán mức độ quan trọng của các vector 
         saliency_vec = np.dot(np.square(S), np.square(VT))
 
         #Chọn Các Câu Quan trọng Nhất

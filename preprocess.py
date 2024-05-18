@@ -13,27 +13,19 @@ class Preprocessor:
             self.stop_words = reader.read().split("\n")
 
     def preprocessing(self, paragraph):
-        """
-            sent tokenize
-            word tokenize
-            remove stops word
-            remove unuse sign and abundant space
-        """
-
+        # Chia đoạn văn thành các câu văn riêng biệt
         sentences = self.sent_tokenizer(paragraph)
         for i in range(len(sentences)):
             sentence = sentences[i]
-            # tokenize
+            # chia các câu văn thành các từ riêng biệt
             sent_tokenized = self.word_tokenizer(sentence)
 
-            # remove stop word
+            # loại bỏ các stopword
             for stop_word in self.stop_words:
                 if stop_word in sent_tokenized:
                     sent_tokenized = sent_tokenized.replace(stop_word, " ")
 
-            # remove special sign, abundant space
-
+            # loại bỏ các kí tự đặc biệt, các khoảng trắng thừa
             sent_normalized = self.normalizer(sent_tokenized)
-
             sentences[i] = " ".join(sent_normalized)
         return sentences
