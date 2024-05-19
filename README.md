@@ -12,18 +12,18 @@ Video demo sản phẩm của nhóm: https://s.net.vn/sjUk
 ### Cài đặt
 - Cài đặt Tesseract (để trích xuất văn bản từ hình ảnh):
 
-  -Link: https://github.com/tesseract-ocr/tesseract
+  - Link: https://github.com/tesseract-ocr/tesseract
 
-  > Tải sau đó cài path tới Tesseract-OCR
+  - Tải sau đó cài path tới Tesseract-OCR
 
-(Tham khảo video hướng dẫn: https://www.youtube.com/watch?v=Tj-u1JDhpog - xem từ 1:00 -> 3:02)
+  > (Tham khảo video hướng dẫn: https://www.youtube.com/watch?v=Tj-u1JDhpog - xem từ 1:00 -> 3:02)
 
 
-  Tải gói ngôn ngữ tiếng Việt để Tesseract đọc văn bản tiếng Việt từ hình ảnh tốt hơn:
+  - Tải gói ngôn ngữ tiếng Việt để Tesseract đọc văn bản tiếng Việt từ hình ảnh tốt hơn:
 
-  Link: https://github.com/tesseract-ocr/tessdata/blob/main/vie.traineddata
+    - Link: https://github.com/tesseract-ocr/tessdata/blob/main/vie.traineddata
 
-  Sau đó dán file mới tải vào Tesseract-OCR\tessdata
+    - Sau đó dán file mới tải vào Tesseract-OCR\tessdata
 
 
 - Cài đặt các thư viện cần thiết trong file requirements.txt bằng câu lệnh:
