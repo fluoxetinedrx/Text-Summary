@@ -6,7 +6,7 @@
 4. Nguyễn Lâm Tùng Bách - 22022640
 
 ## Đề tài: Xây dựng trang web tóm tắt văn bản
-Video demo sản phẩm của nhóm: https://s.net.vn/sjUk
+Report và demo sản phẩm: https://s.net.vn/UH7o
 
 ## Hướng dẫn cài đặt và sử dụng
 ### Cài đặt
