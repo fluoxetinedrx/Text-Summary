@@ -9,7 +9,7 @@
 Video demo sản phẩm của nhóm: https://s.net.vn/sjUk
 
 ## Hướng dẫn cài đặt và sử dụng
-# Cài đặt
+### Cài đặt
 -Cài đặt Tesseract (để trích xuất văn bản từ hình ảnh):
 Link: https://github.com/tesseract-ocr/tesseract
 Tải sau đó cài path tới Tesseract-OCR
@@ -22,6 +22,6 @@ Sau đó dán file mới tải vào Tesseract-OCR\tessdata
 -Cài đặt các thư viện cần thiết trong file requirements.txt bằng câu lệnh:
 pip install -r requirements.txt
 
-# Hướng dẫn sử dụng:
+### Hướng dẫn sử dụng:
 -Đầu tiên chạy file app.py
 -Sau đó vào thư mục frontend, go live file index.html để sử dụng
