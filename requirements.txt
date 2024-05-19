@@ -1,0 +1,14 @@
+Flask
+Werkzeug
+mimetypes
+nltk
+gensim
+pyvi
+datasets
+evaluate
+scikit-learn
+numpy
+python-docx
+pymupdf
+pytesseract
+pillow
