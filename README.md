@@ -18,8 +18,7 @@ Cài đặt Tesseract (để trích xuất văn bản từ hình ảnh):
         Link: https://github.com/tesseract-ocr/tessdata/blob/main/vie.traineddata
         Sau đó dán file mới tải vào Tesseract-OCR\tessdata
 
-Cài đặt các thư viện cần thiết trong file requirements.txt bằng câu lệnh:
-    pip install -r requirements.txt
+Cài đặt các thư viện cần thiết trong file requirements.txt bằng câu lệnh: pip install -r requirements.txt
 
 Hướng dẫn sử dụng:
     Đầu tiên chạy file app.py
